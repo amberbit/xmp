@@ -39,6 +39,8 @@ Currently only JPEG is supported through exifr gem.
 
 == Development
 
+Fork it at https://github.com/amberbit/xmp
+
   # install development dependencies
   bundle install
   # run specs

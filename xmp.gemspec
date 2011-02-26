@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Wojciech Piekutowski"]
   s.email       = ["wojciech.piekutowski@amberbit.com"]
-  s.homepage    = ""
+  s.homepage    = "https://github.com/amberbit/xmp"
   s.summary     = %q{Extensible Metadata Platform (XMP) parser}
   s.description = %q{Extensible Metadata Platform (XMP) parser}
 
