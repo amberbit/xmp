@@ -152,12 +152,6 @@
      <rdf:li>100</rdf:li>
     </rdf:Seq>
    </exif:ISOSpeedRatings>
-   <exif:Flash
-    exif:Fired="True"
-    exif:Return="0"
-    exif:Mode="1"
-    exif:Function="False"
-    exif:RedEyeMode="False"/>
    <dc:creator>
     <rdf:Seq>
      <rdf:li>John Doe</rdf:li>

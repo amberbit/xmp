@@ -1,8 +1,19 @@
 class XMP
-  class Namespace # :nodoc:
+  class Namespace
+    # available attributes
+    attr_reader :attributes
+
     def initialize(xmp, namespace)
       @xmp = xmp
-      @namespace = namespace
+      @namespace = namespace.to_s
+
+      @attributes = []
+      @attributes.concat xml.at("//rdf:Description").attributes.values.
+        select { |attr| attr.namespace.prefix.to_s == @namespace }.
+        map(&:name)
+      @attributes.concat xml.at("//rdf:Description").
+                             xpath("./#{@namespace}:*").
+                             map(&:name)
     end
 
     def inspect

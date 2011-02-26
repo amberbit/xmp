@@ -13,6 +13,14 @@ Currently only JPEG is supported through exifr gem.
     xmp = XMP.parse(img)
     xmp.dc.subject #=> "something interesting"
 
+    # explore XMP data
+    xmp.namespaces.each do |namespace_name|
+      namespace = x.send(namespace_name)
+      namespace.attributes.each do |attr|
+        puts "#{namespace_name}.#{attr}: " + namespace.send(attr).inspect
+      end
+    end
+
 ## Installation
 
     gem install xmp
