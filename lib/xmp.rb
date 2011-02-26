@@ -50,6 +50,18 @@ class XMP
     has_namespace?(method) or super
   end
 
+  def self.parse(doc)
+    case doc.class.to_s
+    when 'EXIFR::JPEG'
+      if xmp_chunk = doc.app1s.find { |a| a =~ %r|\Ahttp://ns.adobe.com/xap/1.0/| }
+        xmp_data = xmp_chunk.split("\000")[1]
+        XMP.new(xmp_data)
+      end
+    else
+      raise "Document not supported:\n#{doc.inspect}"
+    end
+  end
+
   private
 
   def has_namespace?(namespace)
