@@ -12,3 +12,11 @@ Currently only JPEG is supported through exifr gem.
     img = EXIFR::JPEG.new('IMG_6841.JPG')
     xmp = XMP.parse(img)
     xmp.dc.subject #=> "something interesting"
+
+## Installation
+
+    gem install xmp
+
+## Ruby version
+
+Ruby 1.8.7 and 1.9.2 are supported.

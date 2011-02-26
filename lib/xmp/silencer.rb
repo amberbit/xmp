@@ -1,4 +1,4 @@
-module XMP
+class XMP
   module Silencer
     def self.silently
       verbosity = $VERBOSE
