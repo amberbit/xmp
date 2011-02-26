@@ -5,16 +5,24 @@ require 'xmp/namespace'
 class XMP
   # underlying XML content
   attr_reader :xml
+  # available namespace names
+  attr_reader :namespaces
 
   # accepts valid XMP XML
   def initialize(xml)
     doc = Nokogiri::XML(xml)
     @xml = doc.root
-    @namespaces = doc.collect_namespaces
 
-    # add all namespaces
-    @namespaces.each do |ns, url|
+    available_namespaces = doc.collect_namespaces
+    # let nokogiri know about all namespaces
+    available_namespaces.each do |ns, url|
       @xml.add_namespace_definition ns, url
+    end
+
+    # collect namespace names
+    @namespaces = available_namespaces.collect do |ns, _|
+      ns =~ /^xmlns:(.+)/
+      $1
     end
   end
 
@@ -35,6 +43,6 @@ class XMP
   private
 
   def has_namespace?(namespace)
-    @namespaces.has_key?("xmlns:#{namespace}")
+    namespaces.include?(namespace.to_s)
   end
 end
