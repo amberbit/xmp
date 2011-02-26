@@ -21,7 +21,15 @@ class XMP
     end
 
     def method_missing(method, *args)
-      embedded_attribute(method) || standalone_attribute(method)
+      if has_attribute?(method)
+        embedded_attribute(method) || standalone_attribute(method)
+      else
+        super
+      end
+    end
+
+    def respond_to?(method)
+      has_attribute?(method) or super
     end
 
     private
@@ -30,6 +38,10 @@ class XMP
       description = xml.xpath('//rdf:Description').first
       attribute = description.attribute("#{name}")
       attribute ? attribute.text : nil
+    end
+
+    def has_attribute?(name)
+      attributes.include?(name.to_s)
     end
 
     def standalone_attribute(name)

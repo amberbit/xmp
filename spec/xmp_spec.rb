@@ -17,7 +17,10 @@ describe XMP do
   it "should return embedded attribute" do
     @xmp.Iptc4xmpCore.Location.should eq('Miejsce')
     @xmp.photoshop.Category.should eq('Kategoria')
-    @xmp.photoshop.UnknownAttribute.should be_nil
+  end
+
+  it "should raise NoMethodError on unknown attribute" do
+    lambda { @xmp.photoshop.UnknownAttribute }.should raise_error(NoMethodError)
   end
 
   describe "namespace 'tiff'" do
