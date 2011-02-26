@@ -13,9 +13,9 @@ Currently only JPEG is supported through exifr gem.
   require 'exifr'
   require 'open-uri'
 
-  img = EXIFR::JPEG.new(open('http://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Giewont_and_Wielka_Turnia.jpg/800px-Giewont_and_Wielka_Turnia.jpg'))
+  img = EXIFR::JPEG.new('spec/fixtures/multiple-app1.jpg')
   xmp = XMP.parse(img)
-  xmp.dc.subject #=> "something interesting"
+  xmp.dc.subject #=> ["something interesting"]
 
   # explore XMP data
   xmp.namespaces.each do |namespace_name|
@@ -36,6 +36,13 @@ Currently only JPEG is supported through exifr gem.
 * Ruby 1.8.7, 1.9.2
 * Nokogiri 1.4
 * EXIFR >= 1.0.4
+
+== Development
+
+  # install development dependencies
+  bundle install
+  # run specs
+  rake spec
 
 == License
 
