@@ -19,6 +19,8 @@ Gem::Specification.new do |s|
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
 
+  s.extra_rdoc_files = %w(README.rdoc)
+
   s.add_dependency 'nokogiri', '~>1.4.0'
 
   s.add_development_dependency 'rspec', '~>2.0'

@@ -2,6 +2,13 @@ require 'xmp/silencer'
 XMP::Silencer.silently { require 'nokogiri' }
 require 'xmp/namespace'
 
+# = XMP XML parser
+#
+# == Example
+#   xmp = XMP.new(File.read('xmp.xml'))
+#   xmp.dc.title           # => "Amazing Photo"
+#   xmp.photoshop.Category # => "summer"
+#   xmp.photoshop.SupplementalCategories # => ["morning", "sea"]
 class XMP
   # underlying XML content
   attr_reader :xml
@@ -30,8 +37,7 @@ class XMP
     "#<XMP:@namespaces=#{@namespaces.inspect}>"
   end
 
-  # if it's a valid namespace return a namespace proxy object, else call
-  # other method
+  # returns Namespace object if namespace exists, otherwise tries to call a method
   def method_missing(namespace, *args)
     if has_namespace?(namespace)
       Namespace.new(self, namespace)

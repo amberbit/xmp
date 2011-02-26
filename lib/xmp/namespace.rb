@@ -3,7 +3,7 @@ class XMP
     # available attributes
     attr_reader :attributes
 
-    def initialize(xmp, namespace)
+    def initialize(xmp, namespace) # :nodoc
       @xmp = xmp
       @namespace = namespace.to_s
 
