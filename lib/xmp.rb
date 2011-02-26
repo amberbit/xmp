@@ -26,6 +26,10 @@ class XMP
     end
   end
 
+  def inspect
+    "#<XMP:@namespaces=#{@namespaces.inspect}>"
+  end
+
   # if it's a valid namespace return a namespace proxy object, else call
   # other method
   def method_missing(namespace, *args)
