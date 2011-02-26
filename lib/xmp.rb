@@ -1,0 +1,2 @@
+module XMP
+end
