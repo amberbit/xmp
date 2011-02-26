@@ -4,7 +4,7 @@ require './spec/spec_helper.rb'
 describe XMP do
   subject { XMP.new(File.read('spec/fixtures/xmp.xml')) }
 
-  it "should return all namespaces" do
+  it "should return all namespace names" do
     subject.namespaces.should =~ %w{rdf x tiff exif xap aux Iptc4xmpCore photoshop crs dc}
   end
 
