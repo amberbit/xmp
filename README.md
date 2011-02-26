@@ -15,7 +15,7 @@ Currently only JPEG is supported through exifr gem.
 
     # explore XMP data
     xmp.namespaces.each do |namespace_name|
-      namespace = x.send(namespace_name)
+      namespace = xmp.send(namespace_name)
       namespace.attributes.each do |attr|
         puts "#{namespace_name}.#{attr}: " + namespace.send(attr).inspect
       end
