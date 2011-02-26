@@ -8,12 +8,16 @@ class XMP
       @namespace = namespace.to_s
 
       @attributes = []
-      @attributes.concat xml.at("//rdf:Description").attributes.values.
-        select { |attr| attr.namespace.prefix.to_s == @namespace }.
-        map(&:name)
-      @attributes.concat xml.at("//rdf:Description").
-                             xpath("./#{@namespace}:*").
-                             map(&:name)
+      embedded_attributes =
+        xml.xpath("//rdf:Description").map { |d|
+          d.attributes.values.
+            select { |attr| attr.namespace.prefix.to_s == @namespace }.
+            map(&:name)
+        }.flatten
+      @attributes.concat embedded_attributes
+      standalone_attributes = xml.xpath("//rdf:Description/#{@namespace}:*").
+                                  map(&:name)
+      @attributes.concat standalone_attributes
     end
 
     def inspect
@@ -35,9 +39,9 @@ class XMP
     private
 
     def embedded_attribute(name)
-      description = xml.xpath('//rdf:Description').first
-      attribute = description.attribute("#{name}")
-      attribute ? attribute.text : nil
+      element = xml.at("//rdf:Description[@#{@namespace}:#{name}]")
+      return unless element
+      element.attribute(name.to_s).text
     end
 
     def has_attribute?(name)
