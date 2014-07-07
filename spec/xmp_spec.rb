@@ -15,6 +15,10 @@ describe XMP do
       @xmp.photoshop.SupplementalCategories.should eq(['Nazwa imprezy'])
     end
 
+    it "should return standalone attribute hash" do
+      @xmp.Iptc4xmpCore.CreatorContactInfo.should eq({'CiAdrCtry' => 'Germany', 'CiAdrCity' => 'Berlin'})
+    end
+
     it "should return embedded attribute" do
       @xmp.Iptc4xmpCore.Location.should eq('Miejsce')
       @xmp.photoshop.Category.should eq('Kategoria')
@@ -57,5 +61,37 @@ describe XMP do
       @xmp.photoshop.Headline.should eq('DeniseTestImage')
       @xmp.photoshop.Credit.should eq('Remco')
     end
+  end
+
+  # metadata after lightroom -> preview (resize)
+  # this one has only standalone attributes
+  describe "with xmp3.xml" do
+    before { @xmp = XMP.new(File.read('spec/fixtures/xmp3.xml')) }
+
+    it "should return attributes" do
+      @xmp.Iptc4xmpCore.Location.should eq('Phạm Đình Hồ')
+      @xmp.photoshop.City.should eq('Hanoi')
+      @xmp.aux.Lens.should eq('EF24-105mm f/4L IS USM')
+    end
+
+    it "should return standalone attribute hash" do
+      @xmp.Iptc4xmpCore.CreatorContactInfo.should eq({'CiAdrCtry' => 'Germany', 'CiAdrCity' => 'Berlin'})
+    end
+
+  end
+
+  # metadata after lightroom
+  describe "with xmp4.xml" do
+    before { @xmp = XMP.new(File.read('spec/fixtures/xmp4.xml')) }
+
+    it "should return dc:format" do
+      @xmp.dc.format.should eq('image/jpeg')
+    end
+
+    it "should return standalone attribute hash" do
+      @xmp.Iptc4xmpCore.CreatorContactInfo.should eq({'CiAdrCtry' => 'Germany', 'CiAdrCity' => 'Berlin'})
+    end
+
+
   end
 end

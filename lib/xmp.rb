@@ -19,6 +19,7 @@ class XMP
   def initialize(xml)
     doc = Nokogiri::XML(xml)
     @xml = doc.root
+    (File.open('xmp.xml', 'w') << @xml.to_s).close
 
     available_namespaces = doc.collect_namespaces
     # let nokogiri know about all namespaces
