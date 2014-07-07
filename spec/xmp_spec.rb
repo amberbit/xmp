@@ -15,6 +15,10 @@ describe XMP do
       @xmp.photoshop.SupplementalCategories.should eq(['Nazwa imprezy'])
     end
 
+    it "should return standalone attribute hash" do
+      @xmp.Iptc4xmpCore.CreatorContactInfo.should eq({'CiAdrCtry' => 'Germany', 'CiAdrCity' => 'Berlin'})
+    end
+
     it "should return embedded attribute" do
       @xmp.Iptc4xmpCore.Location.should eq('Miejsce')
       @xmp.photoshop.Category.should eq('Kategoria')

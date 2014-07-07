@@ -57,6 +57,12 @@ class XMP
       if array_value
         items = array_value.xpath("./rdf:li")
         items.map { |i| i.text }
+      elsif attribute.attributes.any?
+        {}.tap do |hash|
+          attribute.attributes.each do |key, attr|
+            hash[key] = attr.value
+          end
+        end
       else
         raise "Don't know how to handle: \n" + attribute.to_s
       end
