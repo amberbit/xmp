@@ -103,7 +103,18 @@ describe XMP do
     it "should return standalone attribute hash" do
       @xmp.Iptc4xmpCore.CreatorContactInfo.should eq({'CiAdrCtry' => 'Germany', 'CiAdrCity' => 'Berlin'})
     end
+  end
 
+  # metadata after lightroom 10 with face recognition
+  describe "with xmp5.xml" do
+    before { @xmp = XMP.new(File.read('spec/fixtures/xmp5.xml')) }
 
+    it "should return dc:format" do
+      @xmp.dc.format.should eq('image/jpeg')
+    end
+
+    it "should be able to read all attribute" do
+      @xmp.to_h.keys.should =~ %w{Iptc4xmpExt aux crs dc exifEX mwg-rs photoshop rdf stArea stDim stEvt stRef x xmp xmpMM}
+    end
   end
 end

@@ -8,7 +8,7 @@ class XMP::Document
     @xml        = doc.root
     @namespaces = doc.collect_namespaces.map do |ns, url|
       @xml.add_namespace_definition ns, url
-      ns[/^xmlns:(.+)/, 1]
+      ns[/^(?:xmlns:)?xmlns:(.+)/, 1]
     end
   end
 
