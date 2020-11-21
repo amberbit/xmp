@@ -13,6 +13,7 @@ describe XMP do
       @xmp.dc.title.should eq(['Tytuł zdjęcia'])
       @xmp.dc.subject.should eq(['Słowa kluczowe i numery startowe.'])
       @xmp.photoshop.SupplementalCategories.should eq(['Nazwa imprezy'])
+      @xmp.photoshop.supplemental_categories.should eq(['Nazwa imprezy'])
     end
 
     it "should return standalone attribute hash" do
