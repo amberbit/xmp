@@ -7,7 +7,7 @@ MP provides object oriented interface to [XMP data](http://en.wikipedia.org/wiki
 Format    | File extension  | Additional dependency
 ----------|-----------------|-----------------------
 JPEG      | .jpeg, .jpg     | [exifr/jpeg](https://github.com/remvee/exifr)
-TIFF      | .tiff           | [exifr/tiff](https://github.com/remvee/exifr)
+TIFF      | .tiff, .tif     | [exifr/tiff](https://github.com/remvee/exifr)
 XMP Files | .xmp, .xml      | none
 
 ## Usage
