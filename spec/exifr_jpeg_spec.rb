@@ -1,4 +1,5 @@
 require './spec/spec_helper.rb'
+require 'exifr/jpeg'
 
 describe "XMP with EXIFR::JPEG" do
   before do
