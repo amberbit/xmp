@@ -10,8 +10,7 @@ Currently only JPEG is supported through exifr gem.
 
   # gem install xmp exifr
   require 'xmp'
-  require 'exifr'
-  require 'open-uri'
+  require 'exifr/jpeg'
 
   img = EXIFR::JPEG.new('spec/fixtures/multiple-app1.jpg')
   xmp = XMP.parse(img)
