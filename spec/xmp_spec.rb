@@ -9,6 +9,15 @@ describe XMP do
       @xmp.namespaces.should =~ %w{rdf x tiff exif xap aux Iptc4xmpCore photoshop crs dc}
     end
 
+    it "should support converting to hash via to_h" do
+      hash = @xmp.to_h
+      hash.should be_a(Hash)
+      hash['dc'].should be_a(Hash)
+      hash.keys.should =~ %w{rdf x tiff exif xap aux Iptc4xmpCore photoshop crs dc}
+      hash['dc'].keys.should =~ %w{creator title rights subject description}
+      hash['dc']['title'].should eq(['Tytuł zdjęcia'])
+    end
+
     it "should return standalone attribute" do
       @xmp.dc.title.should eq(['Tytuł zdjęcia'])
       @xmp.dc.subject.should eq(['Słowa kluczowe i numery startowe.'])

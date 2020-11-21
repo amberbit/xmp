@@ -11,7 +11,7 @@ class XMP::Namespace
   end
   
   def attributes
-    standalone_attributes + embedded_attributes
+    @attributes ||= (standalone_attributes + embedded_attributes).uniq
   end
 
   private
