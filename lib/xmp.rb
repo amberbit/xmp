@@ -12,6 +12,7 @@ module XMP
   extend Handler
   self.handlers = [
     Handler::File.new('.jpg', '.jpeg') { |file| EXIFR::JPEG.new(file) },
+    Handler::File.new('.tiff')         { |file| EXIFR::TIFF.new(file) },
     Handler::File.new('.xmp', '.xml')  { |file| Nokogiri::XML(file) },
     Handler::Exifr.new,
     Handler::XML.new
