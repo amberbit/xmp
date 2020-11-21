@@ -3,7 +3,7 @@ require './spec/spec_helper.rb'
 
 describe XMP do
   describe "with xmp.xml" do
-    before { @xmp = XMP.new(File.read('spec/fixtures/xmp.xml')) }
+    before { @xmp = XMP.new('spec/fixtures/xmp.xml') }
 
     it "should return all namespace names" do
       @xmp.namespaces.should =~ %w{rdf x tiff exif xap aux Iptc4xmpCore photoshop crs dc}

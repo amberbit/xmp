@@ -1,3 +1,3 @@
-class XMP
-  VERSION = "0.2.0"
+module XMP
+  VERSION = '0.3.0'
 end

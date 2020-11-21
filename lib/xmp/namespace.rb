@@ -1,91 +1,52 @@
-class XMP
-  class Namespace < BasicObject
+class XMP::Namespace
+  include XMP::Convenience
+  attr_reader :document, :namespace, :standalone_attributes, :embedded_attributes
 
-    def present?; true end
-    def nil?; false end
-    alias send __send__
+  def initialize(document, namespace)
+    @document, @namespace  = document, namespace
+    @standalone_attributes = xml.xpath("//rdf:Description/#{namespace}:*").map(&:name)
+    @embedded_attributes   = xml.xpath('//rdf:Description').flat_map do |description|
+      description.attributes.values.select { |attr| attr.namespace.prefix.to_s == namespace }.map(&:name)
+    end
+  end
+  
+  def attributes
+    standalone_attributes + embedded_attributes
+  end
 
-    # available attributes
-    attr_reader :attributes
+  private
 
-    def initialize(xmp, namespace) # :nodoc
-      @xmp = xmp
-      @namespace = namespace.to_s
+  def xml
+    document.xml
+  end
 
-      @attributes = []
-      embedded_attributes =
-        xml.xpath("//rdf:Description").map { |d|
-          d.attributes.values.
-            select { |attr| attr.namespace.prefix.to_s == @namespace }.
-            map(&:name)
-        }.flatten
-      @attributes.concat embedded_attributes
-      standalone_attributes = xml.xpath("//rdf:Description/#{@namespace}:*").
-                                  map(&:name)
-      @attributes.concat standalone_attributes
+  def list
+    attributes
+  end
+
+  def get(name)
+    embedded_attributes.include?(name) ? get_embedded(name) : get_standalone(name)
+  end
+
+  def get_embedded(name)  
+    return unless element = xml.at("//rdf:Description[@#{namespace}:#{name}]")
+    element.attribute(name.to_s).text
+  end
+
+  def get_standalone(name)
+    return unless attribute = xml.xpath("//#{namespace}:#{name}").first
+    if list = attribute.xpath("./rdf:Bag | ./rdf:Seq | ./rdf:Alt").first
+      return list.xpath("./rdf:li").map(&:text)
     end
 
-    def inspect
-      "#<XMP::Namespace:#{@namespace}>"
-    end
+    hash = {}
+    attribute.element_children.each { |c| hash[c.name] = c.text }
+    attribute.attributes.each { |k, v| hash[k] = v.value } if hash.empty?
+    return hash unless hash.empty?
 
-    def method_missing(method, *args)
-      if has_attribute?(method)
-        embedded_attribute(method) || standalone_attribute(method)
-      else
-        super
-      end
-    end
+    text = attribute.text.to_s.strip
+    return text if text.length > 0
 
-    def respond_to?(method)
-      has_attribute?(method) or super
-    end
-
-    private
-
-    def embedded_attribute(name)
-      element = xml.at("//rdf:Description[@#{@namespace}:#{name}]")
-      return unless element
-      element.attribute(name.to_s).text
-    end
-
-    def has_attribute?(name)
-      attributes.include?(name.to_s)
-    end
-
-    def standalone_attribute(name)
-      attribute_xpath = "//#{@namespace}:#{name}"
-      attribute = xml.xpath(attribute_xpath).first
-      return unless attribute
-
-      array_value = attribute.xpath("./rdf:Bag | ./rdf:Seq | ./rdf:Alt").first
-      if array_value
-        items = array_value.xpath("./rdf:li")
-        items.map { |i| i.text }
-      else
-        {}.tap do |hash|
-          if attribute.element_children.any?
-            attribute.element_children.each do |child|
-              hash[child.name] = child.text
-            end
-          elsif attribute.attributes.any?
-            attribute.attributes.each do |key, attr|
-              hash[key] = attr.value
-            end
-          end
-          if hash.empty?
-            if text = attribute.text.to_s.strip and text.length > 0
-              return text
-            else
-              ::Kernel.raise "Don't know how to handle: \n" + attribute.to_s if hash.empty?
-            end
-          end
-        end
-      end
-    end
-
-    def xml
-      @xmp.xml
-    end
+    raise XMP::Error, "Don't know how to handle: \n" + attribute.to_s
   end
 end
