@@ -8,5 +8,4 @@ desc "Run all specs"
 RSpec::Core::RakeTask.new do |t|
   t.ruby_opts = "-w"
   t.verbose = true
-  t.skip_bundler = true
 end

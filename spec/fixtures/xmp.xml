@@ -192,6 +192,7 @@
      <rdf:li>255, 255</rdf:li>
     </rdf:Seq>
    </crs:ToneCurve>
+   <Iptc4xmpCore:CreatorContactInfo Iptc4xmpCore:CiAdrCtry="Germany" Iptc4xmpCore:CiAdrCity="Berlin" />
   </rdf:Description>
  </rdf:RDF>
 </x:xmpmeta>

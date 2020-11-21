@@ -1,4 +1,7 @@
+*.swp
 *.gem
 .bundle
 Gemfile.lock
 pkg/*
+/xmp.xml
+.DS_Store

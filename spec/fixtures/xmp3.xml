@@ -1,0 +1,62 @@
+<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="XMP Core 5.4.0">
+   <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+      <rdf:Description xmlns:aux="http://ns.adobe.com/exif/1.0/aux/" xmlns:Iptc4xmpCore="http://iptc.org/std/Iptc4xmpCore/1.0/xmlns/" xmlns:xmp="http://ns.adobe.com/xap/1.0/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:photoshop="http://ns.adobe.com/photoshop/1.0/" xmlns:xmpRights="http://ns.adobe.com/xap/1.0/rights/" rdf:about="">
+         <aux:SerialNumber>1981003444</aux:SerialNumber>
+         <aux:FlashCompensation>0/1</aux:FlashCompensation>
+         <aux:ImageNumber>0</aux:ImageNumber>
+         <aux:LensID>237</aux:LensID>
+         <aux:Firmware>2.0.3</aux:Firmware>
+         <aux:LensInfo>24/1 105/1 0/0 0/0</aux:LensInfo>
+         <aux:Lens>EF24-105mm f/4L IS USM</aux:Lens>
+         <Iptc4xmpCore:Location>Ph&#x1EA1;m &#x110;&#xEC;nh H&#x1ED3;</Iptc4xmpCore:Location>
+         <Iptc4xmpCore:CreatorContactInfo rdf:parseType="Resource">
+            <Iptc4xmpCore:CiAdrCtry>Germany</Iptc4xmpCore:CiAdrCtry>
+            <Iptc4xmpCore:CiAdrCity>Berlin</Iptc4xmpCore:CiAdrCity>
+         </Iptc4xmpCore:CreatorContactInfo>
+         <xmp:ModifyDate>2014-07-06T17:54:07</xmp:ModifyDate>
+         <xmp:CreateDate>2012-12-23T10:38:45</xmp:CreateDate>
+         <xmp:CreatorTool>Adobe Photoshop Lightroom 4.4 (Macintosh)</xmp:CreatorTool>
+         <xmp:Rating>2</xmp:Rating>
+         <dc:subject>
+            <rdf:Bag>
+               <rdf:li>2012</rdf:li>
+               <rdf:li>Asia</rdf:li>
+               <rdf:li>Hanoi</rdf:li>
+               <rdf:li>Vietnam</rdf:li>
+               <rdf:li>food</rdf:li>
+               <rdf:li>frog</rdf:li>
+               <rdf:li>travel</rdf:li>
+            </rdf:Bag>
+         </dc:subject>
+         <dc:description>
+            <rdf:Alt>
+               <rdf:li xml:lang="x-default">This is the Caption</rdf:li>
+            </rdf:Alt>
+         </dc:description>
+         <dc:rights>
+            <rdf:Alt>
+               <rdf:li xml:lang="x-default">&#xA9; Jens Kr&#xE4;mer</rdf:li>
+            </rdf:Alt>
+         </dc:rights>
+         <dc:title>
+            <rdf:Alt>
+               <rdf:li xml:lang="x-default">The title</rdf:li>
+            </rdf:Alt>
+         </dc:title>
+         <dc:creator>
+            <rdf:Seq>
+               <rdf:li>Jens Kr&#xE4;mer</rdf:li>
+            </rdf:Seq>
+         </dc:creator>
+         <photoshop:City>Hanoi</photoshop:City>
+         <photoshop:State>Hanoi</photoshop:State>
+         <photoshop:Country>Vietnam</photoshop:Country>
+         <photoshop:DateCreated>2012-12-23T10:38:45</photoshop:DateCreated>
+         <xmpRights:UsageTerms>
+            <rdf:Alt>
+               <rdf:li xml:lang="x-default">All rights reserved</rdf:li>
+            </rdf:Alt>
+         </xmpRights:UsageTerms>
+      </rdf:Description>
+   </rdf:RDF>
+</x:xmpmeta>
