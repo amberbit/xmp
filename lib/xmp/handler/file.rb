@@ -12,7 +12,7 @@ module XMP::Handler
 
     def call(object)
       return unless SUPPORTED.any? { |c| c === object }
-      return unless path = Pathname(object) and extensions.include? path.extname
+      return unless path = Pathname(object) and extensions.include? path.extname.downcase
       return callback.call(object) if object.is_a? IO
       return path.open(&callback)  if path.exist? and path.readable?
       raise XMP::Error, "cannot read file #{path}"
