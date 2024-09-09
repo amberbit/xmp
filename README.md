@@ -54,7 +54,7 @@ $ gem install exifr # optional, for jpeg/tiff support
 Or you can add it to your Gemfile:
 
 ``` ruby
-gem 'xmp',   '~> 0.3'
+gem 'xmp',   '~> 1.0'
 gem 'exifr', '~> 1.3'
 ```
 
@@ -75,4 +75,4 @@ $ rake spec      # run specs
 ## License
 Ruby's license.
 
-Copyright (c) 2011 Wojciech Piekutowski, AmberBit (http://amberbit.com)
+Copyright (c) 2011 Wojciech Piekutowski, AmberBit (<http://amberbit.com>) and contributors.
