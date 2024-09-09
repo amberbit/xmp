@@ -1,5 +1,10 @@
 class XMP
-  class Namespace
+  class Namespace < BasicObject
+
+    def present?; true end
+    def nil?; false end
+    alias send __send__
+
     # available attributes
     attr_reader :attributes
 
@@ -58,7 +63,24 @@ class XMP
         items = array_value.xpath("./rdf:li")
         items.map { |i| i.text }
       else
-        raise "Don't know how to handle: \n" + attribute.to_s
+        {}.tap do |hash|
+          if attribute.element_children.any?
+            attribute.element_children.each do |child|
+              hash[child.name] = child.text
+            end
+          elsif attribute.attributes.any?
+            attribute.attributes.each do |key, attr|
+              hash[key] = attr.value
+            end
+          end
+          if hash.empty?
+            if text = attribute.text.to_s.strip and text.length > 0
+              return text
+            else
+              ::Kernel.raise "Don't know how to handle: \n" + attribute.to_s if hash.empty?
+            end
+          end
+        end
       end
     end
 
