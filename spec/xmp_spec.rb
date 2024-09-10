@@ -26,6 +26,14 @@ describe XMP do
       @xmp['photoshop']['SupplementalCategories'].should eq(['Nazwa imprezy'])
     end
 
+    it "should respond to standalone attributes" do
+      @xmp.should respond_to(:dc)
+      @xmp.dc.should respond_to(:title)
+      @xmp.should respond_to(:photoshop)
+      @xmp.photoshop.should respond_to(:SupplementalCategories)
+      @xmp.photoshop.should respond_to(:supplemental_categories)
+    end
+
     it "should return standalone attribute hash" do
       @xmp.Iptc4xmpCore.CreatorContactInfo.should eq({'CiAdrCtry' => 'Germany', 'CiAdrCity' => 'Berlin'})
     end
