@@ -10,7 +10,7 @@ module XMP::Convenience
   end
 
   def respond_to_missing?(method_name, include_private = false)
-    include?(key) or super
+    include?(method_name) or super
   end
 
   def to_h
