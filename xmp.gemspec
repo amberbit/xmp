@@ -9,10 +9,9 @@ Gem::Specification.new do |s|
   s.authors     = ["Wojciech Piekutowski"]
   s.email       = ["wojciech.piekutowski@amberbit.com"]
   s.homepage    = "https://github.com/amberbit/xmp"
-  s.summary     = %q{Extensible Metadata Platform (XMP) parser}
-  s.description = %q{Extensible Metadata Platform (XMP) parser}
-
-  s.rubyforge_project = "xmp"
+  s.summary     = %q{Extensible Metadata Platform (XMP) parser for JPEG, TIFF and raw XML files}
+  s.description = %q{Extensible Metadata Platform (XMP) parser extracts metadata from JPED and TIFF image files. It also supports parsing raw XML files containing XMP.}
+  s.licenses    = ["MIT"]
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
@@ -21,10 +20,12 @@ Gem::Specification.new do |s|
 
   s.extra_rdoc_files = %w(README.md)
 
+  s.required_ruby_version = '>= 2.7.0'
+
   s.add_dependency 'nokogiri', '~> 1.0'
 
   s.add_development_dependency 'exifr', '>= 1.0.4', '~> 1.0'
   s.add_development_dependency 'rspec', '~> 3.0'
-  s.add_development_dependency 'logger', '> 1.0'
+  s.add_development_dependency 'logger', '~> 1.0'
   s.add_development_dependency 'rake'
 end
