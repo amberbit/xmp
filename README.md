@@ -1,6 +1,6 @@
 # xmp - Extensible Metadata Platform (XMP) parser
 
-MP provides object oriented interface to [XMP data](http://en.wikipedia.org/wiki/Extensible_Metadata_Platform). XMP data can be found in PDF, JPEG, GIF, PNG, and many other formats.
+XMP provides an object oriented interface to [XMP data](http://en.wikipedia.org/wiki/Extensible_Metadata_Platform). XMP data can be found in PDF, JPEG, GIF, PNG, and many other formats.
 
 ## Supported Formats
 
