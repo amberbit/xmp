@@ -59,9 +59,12 @@ gem 'exifr', '~> 1.3'
 ```
 
 ## Requirements
-* Ruby 2 or Ruby 3
-* Nokogiri (1.10 or newer, gem dependency - will be installed automatically)
-* EXIFR (1.3 or newer) - optional
+* Ruby 2 (supported on >= 2.6, though xmp may work on earlier versions) or Ruby 3
+* nokogiri (>= 1.10). The xmp gem depends on this gem. It will be installed automatically.
+  * On Ruby 2.6, nokogiri 1.13.10 will be installed; nokogiri >= 1.14 require Ruby 2.7.
+  * On Ruby 2.7, nokogiri 1.15.5 will be installed; nokogiri >= 1.16 require Ruby 3.
+  * See https://nokogiri.org/CHANGELOG.html for nokogiri support for older or newer Ruby versions.
+* exifr (>= 1.3). This gem is optional. If you need it, add it to your Gemfile.
 
 ## Development
 
