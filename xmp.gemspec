@@ -20,7 +20,7 @@ Gem::Specification.new do |s|
 
   s.extra_rdoc_files = %w(README.md)
 
-  s.required_ruby_version = '>= 2.7.0'
+  s.required_ruby_version = '>= 2.6.0'
 
   s.add_dependency 'nokogiri', '~> 1.0'
 
