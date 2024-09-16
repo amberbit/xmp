@@ -16,7 +16,6 @@ module XMP::Handler
     end
 
     raise last_error if last_error
-    raise XMP::Error, "cannot handle #{object.inspect}"
   end
 
   alias_method :parse, :new
