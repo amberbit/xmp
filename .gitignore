@@ -1,8 +1,8 @@
-*.swp
-*.gem
-.bundle
-Gemfile.lock
-pkg/*
-/xmp.xml
 .DS_Store
-doc
+*.gem
+*.swp
+/.bundle
+/Gemfile.lock
+/doc
+/pkg/*
+/xmp.xml
