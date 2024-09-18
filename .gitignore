@@ -3,6 +3,7 @@
 *.swp
 /.bundle
 /Gemfile.lock
+/coverage
 /doc
 /pkg/*
 /xmp.xml
