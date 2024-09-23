@@ -1,3 +1,6 @@
+require 'simplecov'
+SimpleCov.start { enable_coverage :branch }
+
 require 'bundler/setup'
 Bundler.require(:development)
 

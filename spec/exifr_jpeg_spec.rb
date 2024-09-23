@@ -20,4 +20,10 @@ describe "XMP with EXIFR::JPEG" do
     xmp.should be_instance_of(XMP::Document)
     xmp.namespaces.should =~ %w{dc iX pdf photoshop rdf tiff x xap xapRights}
   end
+
+  # TODO return an empty XML::Document
+  it "should raise for an image without XMP metadata" do
+    lambda { XMP.parse('spec/fixtures/no-xmp-metadata.jpg') }.
+      should raise_error(XMP::NoXMP, "XMP section missing from jpeg")
+  end
 end

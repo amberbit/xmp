@@ -48,6 +48,13 @@ describe XMP do
       @xmp.photoshop['UnknownAttribute'].should eq(nil)
     end
 
+    it "should raise if an attribute is called with any argument" do
+      lambda { XMP.new('spec/fixtures/xmp.xml').dc('Comics') }.
+        should raise_error(ArgumentError, "wrong number of arguments (given 1, expected 0)")
+      lambda { XMP.new('spec/fixtures/xmp.xml').dc.title('Amazing Stories') }.
+        should raise_error(ArgumentError, "wrong number of arguments (given 1, expected 0)")
+    end
+
     describe "namespace 'tiff'" do
       before { @namespace = @xmp.tiff }
 
@@ -124,5 +131,25 @@ describe XMP do
     it "should be able to read all attribute" do
       @xmp.to_h.keys.should =~ %w{Iptc4xmpExt aux crs dc exifEX mwg-rs photoshop rdf stArea stDim stEvt stRef x xmp xmpMM}
     end
+  end
+
+  it "should read from an IO" do
+    xmp = XMP.new(File.open('spec/fixtures/xmp.xml'))
+    xmp.namespaces.should =~ %w{rdf x tiff exif xap aux Iptc4xmpCore photoshop crs dc}
+  end
+
+  it "should raise if the file doesn't exist" do
+    nonexistent_file = 'nonexistent.xml'
+    lambda { XMP.new(nonexistent_file) }.should raise_error(XMP::Error, "cannot read file #{nonexistent_file}")
+  end
+
+  it "should return nil for an unknown attribute" do
+    xmp = XMP.new('spec/fixtures/xmp-with-empty-attribute.xml')
+    lambda { xmp.Iptc4xmpCore.CreatorContactInfo }.
+      should raise_error(XMP::Error, "Don't know how to handle: \n<Iptc4xmpCore:CreatorContactInfo/>")
+  end
+
+  it "should raise for an unknown input type" do
+    lambda { XMP.new(0) }.should raise_error(XMP::Error, "cannot handle 0")
   end
 end

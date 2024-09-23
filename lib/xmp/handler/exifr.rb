@@ -10,7 +10,12 @@ module XMP::Handler
     def call(object)
       return unless defined?(EXIFR::JPEG)
       case object
-      when EXIFR::JPEG then format, xmp_data = 'jpeg', object.app1s.find { |a| a =~ %r|\Ahttp://ns.adobe.com/xap/1.0/| }&.split("\000")[1]
+      when EXIFR::JPEG
+        format, xmp_data = 'jpeg', nil
+        xmp_chunk = object.app1s.find { |a| a =~ %r|\Ahttp://ns.adobe.com/xap/1.0/| }
+        if xmp_chunk
+          xmp_data = xmp_chunk.split("\000")[1]
+        end
       when EXIFR::TIFF then format, xmp_data = 'tiff', object.xmp
       else return
       end

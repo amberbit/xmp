@@ -29,12 +29,12 @@ class XMP::Namespace
   end
 
   def get_embedded(name)  
-    return unless element = xml.at("//rdf:Description[@#{namespace}:#{name}]")
+    element = xml.at("//rdf:Description[@#{namespace}:#{name}]")
     element.attribute(name.to_s).text
   end
 
   def get_standalone(name)
-    return unless attribute = xml.xpath("//#{namespace}:#{name}").first
+    attribute = xml.xpath("//#{namespace}:#{name}").first
     if list = attribute.xpath("./rdf:Bag | ./rdf:Seq | ./rdf:Alt").first
       return list.xpath("./rdf:li").map(&:text)
     end
