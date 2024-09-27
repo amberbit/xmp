@@ -17,11 +17,10 @@ module XMP::Handler
         else
           xmp_data = XMP::Document.new
         end
-      when EXIFR::TIFF then format, xmp_data = 'tiff', object.xmp
+      when EXIFR::TIFF
+        xmp_data = object.xmp || XMP::Document.new
       else return
       end
-
-      raise XMP::NoXMP, "XMP section missing from #{format}" unless xmp_data
       xmp_data
     end
   end
