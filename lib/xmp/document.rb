@@ -17,6 +17,10 @@ class XMP::Document
     end
   end
 
+  def empty?
+    @xml.nil?
+  end
+
   private
 
   def list
