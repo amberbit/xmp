@@ -1,4 +1,3 @@
-require './spec/spec_helper.rb'
 require 'exifr/tiff'
 
 describe "XMP with EXIFR::TIFF" do
