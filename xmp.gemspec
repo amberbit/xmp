@@ -10,8 +10,8 @@ Gem::Specification.new do |s|
   s.email       = ["wojciech.piekutowski@amberbit.com"]
   s.homepage    = "https://github.com/amberbit/xmp"
   s.summary     = %q{Extensible Metadata Platform (XMP) parser for JPEG, TIFF and raw XML files}
-  s.description = %q{Extensible Metadata Platform (XMP) parser extracts metadata from JPED and TIFF image files. It also supports parsing raw XML files containing XMP.}
-  s.licenses    = ["MIT"]
+  s.description = %q{Extensible Metadata Platform (XMP) parser extracts metadata from JPEG and TIFF image files. It also supports parsing raw XML files containing XMP.}
+  s.licenses    = ["Ruby"]
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")

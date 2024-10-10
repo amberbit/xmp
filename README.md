@@ -76,6 +76,6 @@ $ rake spec      # run specs
 ```
 
 ## License
-Ruby's license.
+[Ruby's license.](https://www.ruby-lang.org/en/about/license.txt)
 
 Copyright (c) 2011 Wojciech Piekutowski, AmberBit (<http://amberbit.com>) and contributors.
