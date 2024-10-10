@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+TBA
+
+## 2.0.0
+
 - `XMP.new` and `.parse` return an empty XMP::Document when a JPEG or TIFF image has no XMP metadata.
   (In 0.2 and earlier, those methods returned `nil` in that case.
   In 1.0 and 1.0.1 they intended to raise a custom exception, but raised `NoMethodError`.)
