@@ -1,5 +1,4 @@
 # encoding: UTF-8
-require './spec/spec_helper.rb'
 
 describe XMP do
   describe "with xmp.xml" do

@@ -1,4 +1,3 @@
-require './spec/spec_helper.rb'
 require 'exifr/tiff'
 
 describe "XMP with EXIFR::TIFF" do
@@ -13,5 +12,9 @@ describe "XMP with EXIFR::TIFF" do
     xmp = XMP.parse(img)
     xmp.should be_instance_of(XMP::Document)
     xmp.namespaces.should =~ %w{dc iX pdf photoshop rdf tiff x xap xapRights}
+  end
+
+  it "should return an empty XMP::Document for an image without XMP metadata" do
+    XMP.parse('spec/fixtures/no-xmp-metadata.tiff').should be_instance_of(XMP::Document)
   end
 end
